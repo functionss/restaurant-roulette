@@ -4,10 +4,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import PizzaIcon from "@icons/Pizza";
+import RefreshIcon from "@icons/Refresh";
+import AddIcon from "@icons/Add";
 
 import type { Suggestion, SuggestionGetResponse } from "types";
 import { getSuggestion, createSuggestion } from "@fetchers/suggestions";
 import setupMirage from "@utils/mirage";
+
+import styles from "@styles/Home.module.css";
 
 setupMirage();
 
@@ -42,17 +46,24 @@ const Home: NextPage = () => {
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
 
-      <div className="wrapper">
-        <div className="header">
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
           <PizzaIcon />
           <h1>Restaurant Roulette</h1>
-          <button onClick={clickHandler}>Get Suggestion</button>
-          <button onClick={handleNewSuggestion}>Add Suggestion</button>
+
+          <div className={styles.actions}>
+            <button className="primary" onClick={clickHandler}>
+              <RefreshIcon className="add-margin" /> Get Suggestion
+            </button>
+            <button className="secondary" onClick={handleNewSuggestion}>
+              <AddIcon />
+            </button>
+          </div>
         </div>
-        <div className="body">
+        <div className={styles.content}>
           {same && <h3 style={{ color: "red" }}>SAME!</h3>}
           {suggestion && (
-            <div className="suggestion">
+            <div className={styles.suggestion}>
               {suggestion.name}
               {suggestion.address}
               {suggestion.url}

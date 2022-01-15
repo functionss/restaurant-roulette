@@ -1,6 +1,75 @@
+@import url("https://use.typekit.net/hyx3dzf.css");
+
+:root {
+    --primary-color: hsl(9,97%,62%);
+    --primary-color-hover: hsl(9,97%,52%);
+    --primary-color-active: hsl(9,97%,42%);
+    --primary-border-color: hsl(9,100%,86%);
+
+    --secondary-color: hsl(147,32%,45%);
+    --secondary-color-hover: hsl(147,32%,35%);
+    --secondary-color-active: hsl(147,32%,25%);
+    --secondary-border-color: hsl(147,32%,85%);
+
+    --lighten: 10%;
+    --darken: -10%;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   background: #FFF9F3;
+  font-family: roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+h1 {
+  font-family: alkaline;
+}
+
+button {
+  font-family: alkaline-caps;
+  font-size: 24px;
+  padding: 10px 30px;
+  color: #ffffff;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 2px solid;
+}
+
+button svg.add-margin {
+  margin-right: 10px;
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-border-color);
+}
+
+button.primary:hover {
+  background: var(--primary-color-hover);
+}
+
+button.primary:active {
+  background-color: var(--primary-color-active);
+}
+
+
+button.secondary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-border-color);
+}
+
+button.secondary:hover {
+  background: var(--secondary-color-hover);
+}
+
+button.secondary:active {
+  background-color: var(--secondary-color-active);
+}
+

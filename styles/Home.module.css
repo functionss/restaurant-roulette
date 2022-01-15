@@ -1,0 +1,9 @@
+.wrapper {}
+.header {}
+.content {}
+.suggestion {}
+
+.actions {
+  display: flex;
+  
+}
