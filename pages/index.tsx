@@ -20,11 +20,7 @@ const Home: NextPage = () => {
 
     // NOTE: It is possible that the API will return the same suggestion multiple times in a row.
     // If you get the same suggestion twice in a row, it must be destiny!
-    if (resp.suggestion.id === suggestion?.id) {
-      setSame(true);
-    } else {
-      setSame(false);
-    }
+    resp.suggestion.id === suggestion?.id ? setSame(true) : setSame(false);
 
     setSuggestion(resp.suggestion);
   };
