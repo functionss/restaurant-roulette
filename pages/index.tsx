@@ -65,8 +65,11 @@ const Home: NextPage = () => {
           {suggestion && (
             <div className={styles.suggestion}>
               {suggestion.name}
+              <br />
               {suggestion.address}
+              <br />
               {suggestion.url}
+              <br />
             </div>
           )}
         </div>
