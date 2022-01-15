@@ -1,53 +1,15 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { createServer, Model } from "miragejs";
-
-import PizzaIcon from "@icons/Pizza";
-import { Suggestion, SuggestionGetResponse } from "types";
-
-import { getSuggestion, createSuggestion } from "@fetchers/suggestions";
-
-import { getRandomIntInRange } from "@utils/random";
 import React, { useState } from "react";
 
-// pull in default fixture data
-import seedSuggestions from "@utils/seed";
+import type { NextPage } from "next";
+import Head from "next/head";
 
-// Instantiate mirage server for mocked API calls
-createServer({
-  models: {
-    suggestion: Model,
-  },
+import PizzaIcon from "@icons/Pizza";
 
-  // Load default suggestions seed data into mirage.
-  seeds(server) {
-    seedSuggestions.map((suggestion) => {
-      server.create("suggestion", suggestion as any);
-    });
-  },
+import type { Suggestion, SuggestionGetResponse } from "types";
+import { getSuggestion, createSuggestion } from "@fetchers/suggestions";
+import setupMirage from "@utils/mirage";
 
-  routes() {
-    // Return random record from suggestions collection.
-    this.get("/v1/suggestions", (schema, request) => {
-      //
-      const suggestions = schema.suggestions.all();
-      const recordCount = suggestions.models.length;
-
-      return schema.suggestions.find(getRandomIntInRange(1, recordCount));
-    });
-
-    // Handle POST request to create new suggestion.
-    this.post("/v1/suggestions", (schema, request) => {
-      const suggestions = schema.suggestions.all();
-      const recordCount = suggestions.models.length;
-
-      let suggestion = JSON.parse(request.requestBody);
-      suggestion.id = recordCount + 1;
-
-      return schema.suggestions.create(suggestion);
-    });
-  },
-});
+setupMirage();
 
 const Home: NextPage = () => {
   const [suggestion, setSuggestion] = useState<Suggestion>();
