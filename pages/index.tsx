@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 
 import PizzaIcon from "@icons/Pizza";
 import RefreshIcon from "@icons/Refresh";
@@ -113,9 +114,11 @@ const Home: NextPage = () => {
 
               <div className={styles.map}>
                 <a href={mapLink} target="_blank" rel="noreferrer noopener">
-                  <img
+                  <Image
                     src={mapImage}
                     alt={`${suggestion.name} - ${suggestion.address}`}
+                    width={640}
+                    height={300}
                   />
                 </a>
               </div>
