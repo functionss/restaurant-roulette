@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 
   const mapImage =
     suggestion !== null
-      ? `https://maps.googleapis.com/maps/api/staticmap?&center=${suggestion.name}+${suggestion.address}&zoom=16&size=640x300&scale=2&key=AIzaSyBxnrgh8XKoeQQ7McVIjhZNfOPNRaG0FOM`
+      ? `https://maps.googleapis.com/maps/api/staticmap?markers=${suggestion.address}&center=${suggestion.name}+${suggestion.address}&zoom=16&size=640x300&scale=2&style=feature:poi.business|visibility:on&key=AIzaSyBxnrgh8XKoeQQ7McVIjhZNfOPNRaG0FOM`
       : "";
   const mapLink =
     suggestion !== null
@@ -102,6 +102,13 @@ const Home: NextPage = () => {
                 <h3 className={styles.suggestionAddress}>
                   {suggestion.address}
                 </h3>
+
+                {same && (
+                  <p className={styles.same}>
+                    Whoa, you spun the same restaurant twice in a row. it must
+                    be <strong>DESTINY!</strong>
+                  </p>
+                )}
               </div>
 
               <div className={styles.map}>
@@ -112,15 +119,6 @@ const Home: NextPage = () => {
                   />
                 </a>
               </div>
-
-              {same && (
-                <div className={styles.same}>
-                  <p>
-                    Whoa, you spun the same restaurant twice in a row. It must
-                    be destiny!
-                  </p>
-                </div>
-              )}
             </div>
           )}
         </div>
