@@ -20,13 +20,17 @@ export default function setupMirage() {
 
     routes() {
       // Return random record from suggestions collection.
-      this.get("/v1/suggestions", (schema, request) => {
-        //
-        const suggestions = schema.suggestions.all();
-        const recordCount = suggestions.models.length;
+      this.get(
+        "/v1/suggestions",
+        (schema, request) => {
+          //
+          const suggestions = schema.suggestions.all();
+          const recordCount = suggestions.models.length;
 
-        return schema.suggestions.find(getRandomIntInRange(1, recordCount));
-      });
+          return schema.suggestions.find(getRandomIntInRange(1, recordCount));
+        },
+        { timing: 2000 }
+      );
 
       // Handle POST request to create new suggestion.
       this.post("/v1/suggestions", (schema, request) => {
