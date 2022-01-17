@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import Modal from "react-modal";
-import { useForm, SubmitHandler } from "react-hook-form";
 
-import { Suggestion, SuggestionPostResponse, APIErrorResponse } from "types";
+import { useForm, SubmitHandler } from "react-hook-form";
+import Modal from "react-modal";
+import { BeatLoader } from "react-spinners";
 
 import AddIcon from "@icons/Add";
 import CloseIcon from "@icons/Close";
 
+import { Suggestion, SuggestionPostResponse, APIErrorResponse } from "types";
+
 import styles from "@styles/NewSuggestionModalForm.module.css";
-import { BeatLoader } from "react-spinners";
 
 interface PropTypes {
   setSuggestion?: (suggestion: Suggestion) => void;

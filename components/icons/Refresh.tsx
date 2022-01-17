@@ -3,7 +3,6 @@ interface PropTypes {
   height?: number;
   fill?: string;
   className?: string;
-  stroke?: string;
 }
 
 export default function Refresh(props: PropTypes) {

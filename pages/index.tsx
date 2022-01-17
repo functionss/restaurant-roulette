@@ -9,17 +9,17 @@ import PizzaIcon from "@icons/Pizza";
 import RefreshIcon from "@icons/Refresh";
 import AddIcon from "@icons/Add";
 
+import NewSuggestionModalForm from "@components/NewSuggestionModalForm";
+import SuggestionCard from "@components/SuggestionCard";
 import type {
   Suggestion,
   SuggestionListResponse,
   APIErrorResponse,
 } from "types";
-import { getSuggestion } from "@fetchers/suggestions";
+
 import setupMirage from "@utils/mirage";
 
 import styles from "@styles/Home.module.css";
-import NewSuggestionModalForm from "@components/NewSuggestionModalForm";
-import SuggestionCard from "@components/SuggestionCard";
 
 setupMirage();
 

@@ -19,9 +19,6 @@
       "@components/*": [
         "components/*"
       ],
-      "@fetchers/*": [
-        "fetchers/*"
-      ],
       "@icons/*": [
         "components/icons/*"
       ],

@@ -1,16 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @next/next/no-html-link-for-pages */
-import React, { useState } from "react";
-
+import React from "react";
 import Image from "next/image";
 
-import PizzaIcon from "@icons/Pizza";
-import RefreshIcon from "@icons/Refresh";
-import AddIcon from "@icons/Add";
-
 import type { Suggestion } from "types";
-import { getSuggestion, createSuggestion } from "@fetchers/suggestions";
-import setupMirage from "@utils/mirage";
 
 import styles from "@styles/SuggestionCard.module.css";
 
