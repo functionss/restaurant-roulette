@@ -28,7 +28,7 @@ const Home: NextPage = () => {
   const [suggestion, setSuggestion] = useState<Suggestion | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [same, setSame] = useState(false);
+  const [destiny, setDestiny] = useState(false);
 
   // State and methods to manage the NewSuggestionModalForm
   const [showModal, setShowModal] = useState(false);
@@ -75,7 +75,9 @@ const Home: NextPage = () => {
 
     // NOTE: It is possible to spin the same suggestion multiple times in a row.
     // If you get the same suggestion twice in a row, it must be destiny!
-    randomSuggestion.id === suggestion?.id ? setSame(true) : setSame(false);
+    randomSuggestion.id === suggestion?.id
+      ? setDestiny(true)
+      : setDestiny(false);
 
     setSuggestion(randomSuggestion);
     setLoading(false);
@@ -124,7 +126,7 @@ const Home: NextPage = () => {
           {suggestion && (
             <SuggestionCard
               suggestion={suggestion}
-              same={same}
+              destiny={destiny}
               loading={loading}
             />
           )}

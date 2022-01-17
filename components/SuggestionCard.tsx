@@ -17,10 +17,10 @@ import styles from "@styles/SuggestionCard.module.css";
 interface PropTypes {
   suggestion: Suggestion;
   loading: boolean;
-  same: boolean;
+  destiny: boolean;
 }
 
-function SuggestionCard({ suggestion, loading, same }: PropTypes) {
+function SuggestionCard({ suggestion, loading, destiny }: PropTypes) {
   const mapImage =
     suggestion !== null
       ? `https://maps.googleapis.com/maps/api/staticmap?markers=${suggestion.address}&center=${suggestion.name}+${suggestion.address}&zoom=16&size=640x300&scale=2&style=feature:poi.business|visibility:on&key=AIzaSyBxnrgh8XKoeQQ7McVIjhZNfOPNRaG0FOM`
@@ -38,9 +38,9 @@ function SuggestionCard({ suggestion, loading, same }: PropTypes) {
         </a>
         <h3 className={styles.suggestionAddress}>{suggestion.address}</h3>
 
-        {same && (
-          <p className={styles.same}>
-            Whoa, you spun the same restaurant twice in a row. it must be{" "}
+        {destiny && (
+          <p className={styles.destiny}>
+            Whoa, you spun the destiny restaurant twice in a row. it must be{" "}
             <strong>DESTINY!</strong>
           </p>
         )}
