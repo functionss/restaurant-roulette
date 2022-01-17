@@ -79,8 +79,10 @@ const Home: NextPage = () => {
       ? setDestiny(true)
       : setDestiny(false);
 
-    setSuggestion(randomSuggestion);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+      setSuggestion(randomSuggestion);
+    }, 2000);
   };
 
   return (
