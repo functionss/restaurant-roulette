@@ -19,9 +19,17 @@ export default function setupMirage() {
     },
 
     routes() {
-      // Return random record from suggestions collection.
+      // Return a list of all suggestions
       this.get(
         "/v1/suggestions",
+        (schema) => {
+          return schema.suggestions.all();
+        },
+      );
+
+      // Return random record from suggestions collection.
+      this.get(
+        "/v1/suggestions/random",
         (schema) => {
           const suggestions = schema.suggestions.all();
           const recordCount = suggestions.models.length;
