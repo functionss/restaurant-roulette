@@ -58,7 +58,7 @@ function NewSuggestionModalForm({
         reset();
       } else {
         const respJSON = (await response.json()) as APIErrorResponse;
-        setErrorMessage: respJSON.error_message;
+        setErrorMessage(respJSON.error_message);
       }
     } catch (error) {
       setErrorMessage(error.message);
