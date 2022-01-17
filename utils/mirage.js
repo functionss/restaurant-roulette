@@ -22,8 +22,7 @@ export default function setupMirage() {
       // Return random record from suggestions collection.
       this.get(
         "/v1/suggestions",
-        (schema, request) => {
-          //
+        (schema) => {
           const suggestions = schema.suggestions.all();
           const recordCount = suggestions.models.length;
 
@@ -33,15 +32,19 @@ export default function setupMirage() {
       );
 
       // Handle POST request to create new suggestion.
-      this.post("/v1/suggestions", (schema, request) => {
-        const suggestions = schema.suggestions.all();
-        const recordCount = suggestions.models.length;
+      this.post(
+        "/v1/suggestions",
+        (schema, request) => {
+          const suggestions = schema.suggestions.all();
+          const recordCount = suggestions.models.length;
 
-        let suggestion = JSON.parse(request.requestBody);
-        suggestion.id = recordCount + 1;
+          let suggestion = JSON.parse(request.requestBody);
+          suggestion.id = recordCount + 1;
 
-        return schema.suggestions.create(suggestion);
-      });
+          return schema.suggestions.create(suggestion);
+        },
+        { timing: 2000 }
+      );
     },
   });
 }

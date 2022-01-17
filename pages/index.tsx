@@ -15,6 +15,7 @@ import { getSuggestion, createSuggestion } from "@fetchers/suggestions";
 import setupMirage from "@utils/mirage";
 
 import styles from "@styles/Home.module.css";
+import NewSuggestionModalForm from "@components/NewSuggestionModalForm";
 
 setupMirage();
 
@@ -22,6 +23,14 @@ const Home: NextPage = () => {
   const [suggestion, setSuggestion] = useState<Suggestion | null>(null);
   const [loading, setLoading] = useState(false);
   const [same, setSame] = useState(false);
+
+  // State and methods to manage the NewSuggestionModalForm
+  const [showModal, setShowModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const openModal = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setShowModal(true);
+  };
 
   const mapImage =
     suggestion !== null
@@ -38,6 +47,9 @@ const Home: NextPage = () => {
     //  Start spinning as soon as the button is clicked
     setLoading(true);
 
+    // If success message was set, clear it on the next spin
+    setSuccessMessage(null);
+
     let resp = await getSuggestion();
 
     // NOTE: It is possible that the API will return the same suggestion multiple times in a row.
@@ -46,16 +58,6 @@ const Home: NextPage = () => {
 
     setSuggestion(resp.suggestion);
     setLoading(false);
-  };
-
-  const handleNewSuggestion = async () => {
-    const suggestion = {
-      name: "Mau",
-      address: "180 Spear St. San Francisco, CA",
-      url: "https://www.yelp.com/biz/mau-san-francisco",
-    } as Suggestion;
-
-    const resp = await createSuggestion(suggestion);
   };
 
   return (
@@ -81,13 +83,23 @@ const Home: NextPage = () => {
             <button className="primary" onClick={clickHandler}>
               <RefreshIcon className="add-margin" /> Get Suggestion
             </button>
-            <button className="secondary" onClick={handleNewSuggestion}>
+            <button className="secondary" onClick={openModal}>
               <AddIcon />
             </button>
           </div>
         </div>
 
         <div className={styles.content}>
+          {successMessage && (
+            <div className={styles.successMessage}>
+              <img
+                className={styles.drFarnsworth}
+                src="/good-news.png"
+                alt="Good news everyone!"
+              />
+              {successMessage}
+            </div>
+          )}
           {suggestion && (
             <div
               className={`${styles.suggestion} ${loading ? styles.fade : ""}`}
@@ -126,6 +138,13 @@ const Home: NextPage = () => {
           )}
         </div>
       </div>
+
+      <NewSuggestionModalForm
+        isOpen={showModal}
+        setShowModal={setShowModal}
+        setSuccessMessage={setSuccessMessage}
+        setSuggestion={setSuggestion}
+      />
     </>
   );
 };

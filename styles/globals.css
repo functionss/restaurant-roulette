@@ -86,3 +86,6 @@ button.secondary:active {
   background-color: var(--secondary-color-active);
 }
 
+button:disabled {
+  opacity: 0.5;
+}

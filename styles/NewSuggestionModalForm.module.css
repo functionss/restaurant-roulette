@@ -1,0 +1,74 @@
+
+.modal {
+  background-color: #ffffff;
+  width: 70vw;
+  padding: 25px;
+  margin: 0 auto;
+  margin-top: 100px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0px;
+  background-color: hsla(30, 100%, 95%, 0.5);
+}
+
+.modalHeader {}
+
+.modalHeader h2 {
+  font-family: 'alkaline';
+  font-size: 48px;
+  margin: 0;
+  margin-bottom: 25px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.modalBody {}
+.modalFooter {}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.formGroup label {
+  font-family: 'alkaline-caps';
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.formGroup input {
+  font-family: 'roboto';
+  color: #666;
+  font-size: 18px;
+  font-weight: normal;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.formInputError, .errorMessage {
+  color: red;
+  font-family: alkaline-caps;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.formFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  float: right;
+  padding: 0px 10px;
+  display: block;
+}
