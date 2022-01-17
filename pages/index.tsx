@@ -105,7 +105,8 @@ const Home: NextPage = () => {
 
           <div className={styles.actions}>
             <button className="primary" onClick={triggerSpin}>
-              <RefreshIcon className="add-margin" /> Get Suggestion
+              <RefreshIcon className="add-margin" />
+              Spin that pizza!
             </button>
             <button className="secondary" onClick={openModal}>
               <AddIcon />
